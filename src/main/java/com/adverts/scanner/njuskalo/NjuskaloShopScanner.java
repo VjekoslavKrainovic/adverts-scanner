@@ -26,7 +26,7 @@ public class NjuskaloShopScanner implements ShopScanner {
         .withMaxPrice(scanDto.getMaxPrice())
         .withMinYearManufactured(scanDto.getMinYearManufactured())
         .withMaxYearManufactured(scanDto.getMaxYearManufactured())
-        .withEngineType("602") // TODO: fix this hard coded
+        .withEngineType(EngineTypeMapper.getNjuskaloId(scanDto.getEngineType()))
         .withMinEnginePower(scanDto.getMinEnginePower())
         .withMaxEnginePower(scanDto.getMaxEnginePower())
         .withMinMileage(scanDto.getMinMileage())
