@@ -75,10 +75,10 @@ public class NjuskaloCarUrlBuilder {
     return this;
   }
 
-  public NjuskaloCarUrlBuilder withEngineType(EngineType engineType) {
+  public NjuskaloCarUrlBuilder withEngineType(String engineType) {
     addAndSignIfNotFirstUri();
     this.carUriBuilder.append(ENGINE_TYPE);
-    this.carUriBuilder.append(engineType.getFuelType());
+    this.carUriBuilder.append(engineType);
 
     return this;
   }

@@ -17,8 +17,8 @@ public class ScanController {
   }
 
   @PostMapping("v1/scan/create")
-  public void createScan(@RequestBody ScanParameters scanParameters){
-
+  public String createScan(@RequestBody ScanParameters scanParameters){
+    return scanService.createScan(null);
   }
 
 }

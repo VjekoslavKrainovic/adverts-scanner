@@ -1,7 +1,9 @@
 package com.adverts.scanner.domain.scan;
 
+import java.util.Optional;
+
 public interface ShopScanner {
 
-  boolean scanForProducts(ScanDto scanDto);
+  Optional<String> scanForProducts(ScanDto scanDto);
 
 }

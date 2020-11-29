@@ -17,14 +17,14 @@ public class NjuskaloShopScanner implements ShopScanner {
   }
 
   @Override
-  public boolean scanForProducts(ScanDto scanDto) {
+  public Optional<String> scanForProducts(ScanDto scanDto) {
 
     NjuskaloCarUrl url = new NjuskaloCarUrlBuilder(scanDto.getFullCarName())
         .withMinPrice(scanDto.getMinPrice())
         .withMaxPrice(scanDto.getMaxPrice())
         .withMinYearManufactured(scanDto.getMinYearManufactured())
         .withMaxYearManufactured(scanDto.getMaxYearManufactured())
-        .withEngineType(EngineType.DIESEL) // TODO: fix this hard coded
+        .withEngineType("602") // TODO: fix this hard coded
         .withMinEnginePower(scanDto.getMinEnginePower())
         .withMaxEnginePower(scanDto.getMaxEnginePower())
         .withMinMileage(scanDto.getMinMileage())
@@ -35,6 +35,10 @@ public class NjuskaloShopScanner implements ShopScanner {
 
     NjuskaloProductsScanner productsScanner = new NjuskaloProductsScanner(htmlBody.get());
 
-    return productsScanner.isProductsExist();
+    if (productsScanner.isProductsExist()) {
+      return Optional.of(url.getCarUri());
+    }
+
+    return Optional.empty();
   }
 }
