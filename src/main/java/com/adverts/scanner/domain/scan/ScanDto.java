@@ -1,8 +1,10 @@
 package com.adverts.scanner.domain.scan;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class ScanDto {
 
   private String minPrice;
