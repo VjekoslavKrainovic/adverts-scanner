@@ -1,5 +1,5 @@
 package com.adverts.scanner.domain.scan;
 
 public enum EngineTypeDto {
-  diesel;
+  DIESEL, PETROL, HYBRID, ELETRIC;
 }

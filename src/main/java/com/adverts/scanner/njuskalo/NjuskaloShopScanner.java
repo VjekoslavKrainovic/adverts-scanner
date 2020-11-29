@@ -12,6 +12,8 @@ public class NjuskaloShopScanner implements ShopScanner {
 
   private final HtmlDownloader htmlDownloader;
 
+
+
   public NjuskaloShopScanner(HtmlDownloader htmlDownloader) {
     this.htmlDownloader = htmlDownloader;
   }

@@ -12,4 +12,6 @@ public class NjuskaloCarUrl {
     return carUri;
   }
 
+
+
 }

@@ -31,7 +31,7 @@ class ScanDtoMapperTest {
     assertThat(scanDto.getMaxPrice()).isEqualTo("101");
     assertThat(scanDto.getMinYearManufactured()).isEqualTo("200");
     assertThat(scanDto.getMaxYearManufactured()).isEqualTo("201");
-    assertThat(scanDto.getEngineType()).isEqualTo(EngineTypeDto.diesel);
+    assertThat(scanDto.getEngineType()).isEqualTo(EngineTypeDto.DIESEL);
     assertThat(scanDto.getMinEnginePower()).isEqualTo("300");
     assertThat(scanDto.getMaxEnginePower()).isEqualTo("301");
     assertThat(scanDto.getMinMileage()).isEqualTo("400");
