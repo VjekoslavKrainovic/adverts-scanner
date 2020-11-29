@@ -18,6 +18,6 @@ public class ScanParameters {
   private String maxEnginePower;
   private String minMileage;
   private String maxMileage;
-  private Car car;
+  private String fullCarName;
 
 }

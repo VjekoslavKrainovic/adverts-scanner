@@ -1,12 +1,11 @@
-package com.adverts.scanner.access.njuskalo;
+package com.adverts.scanner.domain.downloaderhtml;
 
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
+import com.adverts.scanner.domain.downloaderhtml.HtmlDownloader;
+import com.adverts.scanner.domain.downloaderhtml.HtmlDownloaderImpl;
 import java.net.URI;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;

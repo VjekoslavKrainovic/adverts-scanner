@@ -1,4 +1,4 @@
-package com.adverts.scanner.access.njuskalo;
+package com.adverts.scanner.domain.downloaderhtml;
 
 import java.net.URI;
 import java.net.http.HttpClient;

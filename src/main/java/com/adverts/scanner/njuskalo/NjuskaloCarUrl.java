@@ -1,4 +1,4 @@
-package com.adverts.scanner.access.njuskalo;
+package com.adverts.scanner.njuskalo;
 
 public class NjuskaloCarUrl {
 

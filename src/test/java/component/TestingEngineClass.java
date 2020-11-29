@@ -1,14 +1,12 @@
-package com.adverts.scanner;
+package component;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.adverts.scanner.access.njuskalo.HtmlDownloader;
-import com.adverts.scanner.access.njuskalo.HtmlDownloaderImpl;
-import com.adverts.scanner.access.njuskalo.NjuskaloCarUrl;
-import com.adverts.scanner.access.njuskalo.NjuskaloProductsScanner;
-import com.adverts.scanner.access.njuskalo.ProductsScanner;
-import com.adverts.scanner.access.njuskalo.car.AudiModel;
-import com.adverts.scanner.access.njuskalo.car.NjuskaloCarUrlBuilder;
+import com.adverts.scanner.domain.downloaderhtml.HtmlDownloader;
+import com.adverts.scanner.domain.downloaderhtml.HtmlDownloaderImpl;
+import com.adverts.scanner.njuskalo.NjuskaloCarUrl;
+import com.adverts.scanner.njuskalo.NjuskaloCarUrlBuilder;
+import com.adverts.scanner.njuskalo.NjuskaloProductsScanner;
 import java.net.URI;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,7 +14,7 @@ import org.junit.jupiter.api.Test;
 
 public class TestingEngineClass {
 
-  private ProductsScanner productsScanner;
+  private NjuskaloProductsScanner productsScanner;
 
   private HtmlDownloader htmlDownloader;
 
@@ -28,7 +26,7 @@ public class TestingEngineClass {
   @Test
   void given_URL_Then_Check_If_Products_Exists() {
     // prepare
-    NjuskaloCarUrl url = new NjuskaloCarUrlBuilder(AudiModel.A5_COUPE.getModel())
+    NjuskaloCarUrl url = new NjuskaloCarUrlBuilder("audi-a5-coupe")
         .withMinPrice("5000")
         .withMaxPrice("7000")
         .withMinYearManufactured("1989")

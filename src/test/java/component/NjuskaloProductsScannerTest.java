@@ -1,7 +1,10 @@
-package com.adverts.scanner.access.njuskalo;
+package component;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.adverts.scanner.domain.downloaderhtml.HtmlDownloader;
+import com.adverts.scanner.domain.downloaderhtml.HtmlDownloaderImpl;
+import com.adverts.scanner.njuskalo.NjuskaloProductsScanner;
 import java.net.URI;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 class NjuskaloProductsScannerTest {
 
-  private ProductsScanner productsScanner;
+  private NjuskaloProductsScanner productsScanner;
 
   private HtmlDownloader htmlDownloader;
 

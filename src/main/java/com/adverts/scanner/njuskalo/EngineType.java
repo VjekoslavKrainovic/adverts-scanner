@@ -1,4 +1,4 @@
-package com.adverts.scanner.access.njuskalo.car;
+package com.adverts.scanner.njuskalo;
 
 public enum EngineType {
 

@@ -1,8 +1,10 @@
-package com.adverts.scanner.access.njuskalo.car;
+package com.adverts.scanner.njuskalo;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.adverts.scanner.access.njuskalo.NjuskaloCarUrl;
+import com.adverts.scanner.njuskalo.EngineType;
+import com.adverts.scanner.njuskalo.NjuskaloCarUrl;
+import com.adverts.scanner.njuskalo.NjuskaloCarUrlBuilder;
 import org.junit.jupiter.api.Test;
 
 class NjuskaloCarUrlBuilderTest {
@@ -11,7 +13,7 @@ class NjuskaloCarUrlBuilderTest {
   void given_All_Parameters_Then_Return_Url() {
 
     // execute
-    NjuskaloCarUrl url = new NjuskaloCarUrlBuilder(AudiModel.A5_COUPE.getModel())
+    NjuskaloCarUrl url = new NjuskaloCarUrlBuilder("audi-a5-coupe")
         .withMinPrice("5000")
         .withMaxPrice("7000")
         .withMinYearManufactured("1989")

@@ -1,5 +1,8 @@
 package com.adverts.scanner.domain.scan;
 
+import lombok.Data;
+
+@Data
 public class ScanDto {
 
   private String minPrice;
@@ -11,6 +14,6 @@ public class ScanDto {
   private String maxEnginePower;
   private String minMileage;
   private String maxMileage;
-  private CarDto car;
+  private String fullCarName;
 
 }

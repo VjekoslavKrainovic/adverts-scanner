@@ -1,10 +1,10 @@
-package com.adverts.scanner.access.njuskalo;
+package com.adverts.scanner.njuskalo;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-public class NjuskaloProductsScanner implements ProductsScanner {
+public class NjuskaloProductsScanner {
 
   private String htmlBody;
   private Document htmlDocument;
@@ -14,7 +14,6 @@ public class NjuskaloProductsScanner implements ProductsScanner {
     this.htmlDocument = Jsoup.parse(htmlBody);
   }
 
-  @Override
   public boolean isProductsExist() {
 
     Elements allProducts = htmlDocument.select("ul.EntityList-items");
