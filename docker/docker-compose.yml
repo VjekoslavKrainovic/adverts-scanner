@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  tor-proxy:
+    image: tor-proxy
+    container_name: tor-proxy
+    ports:
+      - 8118:8118
+      - 9050:9050
+    environment:
+      TOR_MaxCircuitDirtiness: 10
+    networks:
+      - adverts-network
+      
+networks:
+  adverts-network:
+
