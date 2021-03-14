@@ -20,7 +20,7 @@ public class ScanController {
   @PostMapping("v1/scan/create")
   public ScanResponse createScan(@RequestBody ScanParameters scanParameters){
     Scan scan = ScanDtoMapper.map(scanParameters);
-    String advertShopUrl = scanService.createScan(scan);
+    String advertShopUrl = scanService.createScan(scan, "vjeko@email.com");
     return new ScanResponse(advertShopUrl);
   }
 
