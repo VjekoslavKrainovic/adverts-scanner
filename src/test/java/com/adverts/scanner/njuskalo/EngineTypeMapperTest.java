@@ -2,7 +2,7 @@ package com.adverts.scanner.njuskalo;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.adverts.scanner.domain.scan.EngineTypeDto;
+import com.adverts.scanner.domain.scan.EngineType;
 import org.junit.jupiter.api.Test;
 
 class EngineTypeMapperTest {
@@ -11,7 +11,7 @@ class EngineTypeMapperTest {
   void Given_Engine_Type_Petrol_Then_Map_To_NjuskaloID() {
 
     // prepare
-    EngineTypeDto engineType = EngineTypeDto.PETROL;
+    EngineType engineType = EngineType.petrol;
 
     // execute
     String engineID = EngineTypeMapper.getNjuskaloId(engineType);
@@ -25,7 +25,7 @@ class EngineTypeMapperTest {
   void Given_Engine_Type_Diesel_Then_Map_To_NjuskaloID() {
 
     // prepare
-    EngineTypeDto engineType = EngineTypeDto.DIESEL;
+    EngineType engineType = EngineType.diesel;
 
     // execute
     String engineID = EngineTypeMapper.getNjuskaloId(engineType);
@@ -39,7 +39,7 @@ class EngineTypeMapperTest {
   void Given_Engine_Type_Eletric_Then_Map_To_NjuskaloID() {
 
     // prepare
-    EngineTypeDto engineType = EngineTypeDto.ELETRIC;
+    EngineType engineType = EngineType.eletric;
 
     // execute
     String engineID = EngineTypeMapper.getNjuskaloId(engineType);
@@ -53,7 +53,7 @@ class EngineTypeMapperTest {
   void Given_Engine_Type_Hybrid_Then_Map_To_NjuskaloID() {
 
     // prepare
-    EngineTypeDto engineType = EngineTypeDto.HYBRID;
+    EngineType engineType = EngineType.hybrid;
 
     // execute
     String engineID = EngineTypeMapper.getNjuskaloId(engineType);

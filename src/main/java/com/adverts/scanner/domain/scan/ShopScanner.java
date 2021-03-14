@@ -4,6 +4,6 @@ import java.util.Optional;
 
 public interface ShopScanner {
 
-  Optional<String> scanForProducts(ScanDto scanDto);
+  Optional<String> scanForProducts(Scan scan);
 
 }

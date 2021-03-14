@@ -1,7 +1,7 @@
 package com.adverts.scanner.njuskalo;
 
 import com.adverts.scanner.domain.downloaderhtml.HtmlDownloader;
-import com.adverts.scanner.domain.scan.ScanDto;
+import com.adverts.scanner.domain.scan.Scan;
 import com.adverts.scanner.domain.scan.ShopScanner;
 import java.net.URI;
 import java.util.Optional;
@@ -18,18 +18,18 @@ public class NjuskaloShopScanner implements ShopScanner {
   }
 
   @Override
-  public Optional<String> scanForProducts(ScanDto scanDto) {
+  public Optional<String> scanForProducts(Scan scan) {
 
-    NjuskaloCarUrl url = new NjuskaloCarUrlBuilder(scanDto.getCar())
-        .withMinPrice(scanDto.getMinPrice())
-        .withMaxPrice(scanDto.getMaxPrice())
-        .withMinYearManufactured(scanDto.getMinYearManufactured())
-        .withMaxYearManufactured(scanDto.getMaxYearManufactured())
-        .withEngineType(EngineTypeMapper.getNjuskaloId(scanDto.getEngineType()))
-        .withMinEnginePower(scanDto.getMinEnginePower())
-        .withMaxEnginePower(scanDto.getMaxEnginePower())
-        .withMinMileage(scanDto.getMinMileage())
-        .withMaxMileage(scanDto.getMaxMileage())
+    NjuskaloCarUrl url = new NjuskaloCarUrlBuilder(scan.getCar())
+        .withMinPrice(scan.getMinPrice())
+        .withMaxPrice(scan.getMaxPrice())
+        .withMinYearManufactured(scan.getMinYearManufactured())
+        .withMaxYearManufactured(scan.getMaxYearManufactured())
+        .withEngineType(scan.getEngineType())
+        .withMinEnginePower(scan.getMinEnginePower())
+        .withMaxEnginePower(scan.getMaxEnginePower())
+        .withMinMileage(scan.getMinMileage())
+        .withMaxMileage(scan.getMaxMileage())
         .build();
 
     Optional<String> htmlBody = htmlDownloader.execute(URI.create(url.getCarUri()));

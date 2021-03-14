@@ -13,7 +13,7 @@ public class ScanServiceImpl implements ScanService {
   }
 
   @Override
-  public String createScan(ScanDto scan) {
+  public String createScan(Scan scan) {
     Optional<String> productUrl = shopScanner.scanForProducts(scan);
     return productUrl.orElse(null);
   }

@@ -3,6 +3,7 @@ package com.adverts.scanner.njuskalo;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.adverts.scanner.domain.scan.CarModel;
+import com.adverts.scanner.domain.scan.EngineType;
 import org.junit.jupiter.api.Test;
 
 class NjuskaloCarUrlBuilderTest {
@@ -16,7 +17,7 @@ class NjuskaloCarUrlBuilderTest {
         .withMaxPrice("7000")
         .withMinYearManufactured("1989")
         .withMaxYearManufactured("2020")
-        .withEngineType("602")
+        .withEngineType(EngineType.diesel)
         .withMinEnginePower("50")
         .withMaxEnginePower("500")
         .withMinMileage("5000")

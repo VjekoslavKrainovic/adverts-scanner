@@ -1,6 +1,7 @@
 package com.adverts.scanner.api.rest.scan;
 
 import com.adverts.scanner.domain.scan.CarModel;
+import com.adverts.scanner.domain.scan.EngineType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

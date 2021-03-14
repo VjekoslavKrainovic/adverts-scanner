@@ -5,13 +5,13 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class ScanDto {
+public class Scan {
 
   private String minPrice;
   private String maxPrice;
   private String minYearManufactured;
   private String maxYearManufactured;
-  private EngineTypeDto engineType;
+  private EngineType engineType;
   private String minEnginePower;
   private String maxEnginePower;
   private String minMileage;

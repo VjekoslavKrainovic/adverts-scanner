@@ -1,6 +1,7 @@
 package com.adverts.scanner.njuskalo;
 
 import com.adverts.scanner.domain.scan.CarModel;
+import com.adverts.scanner.domain.scan.EngineType;
 
 public class NjuskaloCarUrlBuilder {
 
@@ -18,9 +19,9 @@ public class NjuskaloCarUrlBuilder {
   private static final String MAX_ENGINE_POWER = "motorPower%5Bmax%5D=";
 
   private final StringBuilder carUriBuilder;
-  private final NjuskaloCarUriParser parser = new NjuskaloCarUriParser();
 
   public NjuskaloCarUrlBuilder(CarModel carModel) {
+    NjuskaloCarUriParser parser = new NjuskaloCarUriParser();
     String carUri = parser.getUri(carModel);
     this.carUriBuilder = new StringBuilder(NJUSKALO_URL + CARS_URI);
     this.carUriBuilder.append(carUri);
@@ -79,10 +80,11 @@ public class NjuskaloCarUrlBuilder {
     return this;
   }
 
-  public NjuskaloCarUrlBuilder withEngineType(String engineType) {
+  public NjuskaloCarUrlBuilder withEngineType(EngineType engineType) {
+    NjuskaloEngineTypeUriParser parse = new NjuskaloEngineTypeUriParser();
     getNextQueryParameterSign();
     this.carUriBuilder.append(ENGINE_TYPE);
-    this.carUriBuilder.append(engineType);
+    this.carUriBuilder.append(parse.getUri(engineType));
 
     return this;
   }

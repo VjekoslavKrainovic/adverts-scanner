@@ -1,21 +1,21 @@
 package com.adverts.scanner.njuskalo;
 
 import com.adverts.scanner.domain.scan.CarModel;
-import java.util.HashMap;
+import java.util.EnumMap;
 
 public class NjuskaloCarUriParser {
 
-  private final HashMap<CarModel, String> carUris = new HashMap<>();
+  private final EnumMap<CarModel, String> carUris = new EnumMap<>(CarModel.class);
 
-  public NjuskaloCarUriParser(){
+  public NjuskaloCarUriParser() {
     setUp();
   }
 
-  public String getUri(CarModel carModel){
+  public String getUri(CarModel carModel) {
     return carUris.get(carModel);
   }
 
-  private void setUp(){
+  private void setUp() {
     carUris.put(CarModel.audi_80, "audi-80");
     carUris.put(CarModel.audi_80_avant, "audi_80-avant");
     carUris.put(CarModel.audi_100, "audi-100");
