@@ -18,10 +18,6 @@ public class NjuskaloProductsScanner {
 
     Elements allProducts = htmlDocument.select("ul.EntityList-items");
 
-    if (allProducts.size() > 2) {
-      return true;
-    }
-
-    return false;
+    return allProducts.size() > 2;
   }
 }

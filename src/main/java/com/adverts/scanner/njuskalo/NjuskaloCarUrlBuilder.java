@@ -17,8 +17,8 @@ public class NjuskaloCarUrlBuilder {
   private static final String MIN_ENGINE_POWER = "motorPower%5Bmin%5D=";
   private static final String MAX_ENGINE_POWER = "motorPower%5Bmax%5D=";
 
-  private StringBuilder carUriBuilder;
-  private NjuskaloCarUriParser parser = new NjuskaloCarUriParser();
+  private final StringBuilder carUriBuilder;
+  private final NjuskaloCarUriParser parser = new NjuskaloCarUriParser();
 
   public NjuskaloCarUrlBuilder(CarModel carModel) {
     String carUri = parser.getUri(carModel);
@@ -32,7 +32,7 @@ public class NjuskaloCarUrlBuilder {
   }
 
   public NjuskaloCarUrlBuilder withMinPrice(String minPrice) {
-    addAndSignIfNotFirstUri();
+    getNextQueryParameterSign();
     this.carUriBuilder.append(MIN_PRICE_URI);
     this.carUriBuilder.append(minPrice);
 
@@ -40,7 +40,7 @@ public class NjuskaloCarUrlBuilder {
   }
 
   public NjuskaloCarUrlBuilder withMaxPrice(String maxPrice) {
-    addAndSignIfNotFirstUri();
+    getNextQueryParameterSign();
     this.carUriBuilder.append(MAX_PRICE_URI);
     this.carUriBuilder.append(maxPrice);
 
@@ -48,7 +48,7 @@ public class NjuskaloCarUrlBuilder {
   }
 
   public NjuskaloCarUrlBuilder withMinYearManufactured(String minYearManufactured) {
-    addAndSignIfNotFirstUri();
+    getNextQueryParameterSign();
     this.carUriBuilder.append(MIN_YEAR_MANUFACTURED_URI);
     this.carUriBuilder.append(minYearManufactured);
 
@@ -56,7 +56,7 @@ public class NjuskaloCarUrlBuilder {
   }
 
   public NjuskaloCarUrlBuilder withMaxYearManufactured(String maxYearManufactured) {
-    addAndSignIfNotFirstUri();
+    getNextQueryParameterSign();
     this.carUriBuilder.append(MAX_YEAR_MANUFACTURED_URI);
     this.carUriBuilder.append(maxYearManufactured);
 
@@ -64,7 +64,7 @@ public class NjuskaloCarUrlBuilder {
   }
 
   public NjuskaloCarUrlBuilder withMinMileage(String minMileage) {
-    addAndSignIfNotFirstUri();
+    getNextQueryParameterSign();
     this.carUriBuilder.append(MIN_MILEAGE);
     this.carUriBuilder.append(minMileage);
 
@@ -72,7 +72,7 @@ public class NjuskaloCarUrlBuilder {
   }
 
   public NjuskaloCarUrlBuilder withMaxMileage(String maxMileage) {
-    addAndSignIfNotFirstUri();
+    getNextQueryParameterSign();
     this.carUriBuilder.append(MAX_MILEAGE);
     this.carUriBuilder.append(maxMileage);
 
@@ -80,7 +80,7 @@ public class NjuskaloCarUrlBuilder {
   }
 
   public NjuskaloCarUrlBuilder withEngineType(String engineType) {
-    addAndSignIfNotFirstUri();
+    getNextQueryParameterSign();
     this.carUriBuilder.append(ENGINE_TYPE);
     this.carUriBuilder.append(engineType);
 
@@ -88,7 +88,7 @@ public class NjuskaloCarUrlBuilder {
   }
 
   public NjuskaloCarUrlBuilder withMinEnginePower(String minEnginePower) {
-    addAndSignIfNotFirstUri();
+    getNextQueryParameterSign();
     this.carUriBuilder.append(MIN_ENGINE_POWER);
     this.carUriBuilder.append(minEnginePower);
 
@@ -96,19 +96,17 @@ public class NjuskaloCarUrlBuilder {
   }
 
   public NjuskaloCarUrlBuilder withMaxEnginePower(String maxEnginePower) {
-    addAndSignIfNotFirstUri();
+    getNextQueryParameterSign();
     this.carUriBuilder.append(MAX_ENGINE_POWER);
     this.carUriBuilder.append(maxEnginePower);
 
     return this;
   }
 
-  private void addAndSignIfNotFirstUri() {
-    final boolean isUrlEndingWithAndSign = this.carUriBuilder.toString().endsWith("?");
+  private void getNextQueryParameterSign() {
+    final boolean isUrlEndingWithQuestionMark = this.carUriBuilder.toString().endsWith("?");
 
-    if (isUrlEndingWithAndSign) {
-      return;
-    } else {
+    if (!isUrlEndingWithQuestionMark) {
       this.carUriBuilder.append("&");
     }
 
