@@ -2,6 +2,7 @@ package com.adverts.scanner.njuskalo;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.adverts.scanner.domain.scan.CarModel;
 import org.junit.jupiter.api.Test;
 
 class NjuskaloCarUrlBuilderTest {
@@ -10,7 +11,7 @@ class NjuskaloCarUrlBuilderTest {
   void given_All_Parameters_Then_Return_Url() {
 
     // execute
-    NjuskaloCarUrl url = new NjuskaloCarUrlBuilder("audi-a5-coupe")
+    NjuskaloCarUrl url = new NjuskaloCarUrlBuilder(CarModel.audi_a5_coupe)
         .withMinPrice("5000")
         .withMaxPrice("7000")
         .withMinYearManufactured("1989")

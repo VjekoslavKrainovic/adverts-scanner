@@ -1,5 +1,6 @@
 package com.adverts.scanner.api.rest.scan;
 
+import com.adverts.scanner.domain.scan.CarModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,6 @@ public class ScanParameters {
   private String maxEnginePower;
   private String minMileage;
   private String maxMileage;
-  private String fullCarName;
+  private CarModel car;
 
 }

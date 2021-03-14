@@ -8,7 +8,7 @@ public class ScanDtoMapper {
     return new ScanDto(scanParameters.getMinPrice(), scanParameters.getMaxPrice(), scanParameters.getMinYearManufactured(),
         scanParameters.getMaxYearManufactured(), EngineTypeDtoMapper.map(scanParameters.getEngineType()),
         scanParameters.getMinEnginePower(), scanParameters.getMaxEnginePower(), scanParameters.getMinMileage(),
-        scanParameters.getMaxMileage(), scanParameters.getFullCarName());
+        scanParameters.getMaxMileage(), scanParameters.getCar());
   }
 
 }

@@ -13,7 +13,6 @@ public class NjuskaloShopScanner implements ShopScanner {
   private final HtmlDownloader htmlDownloader;
 
 
-
   public NjuskaloShopScanner(HtmlDownloader htmlDownloader) {
     this.htmlDownloader = htmlDownloader;
   }
@@ -21,7 +20,7 @@ public class NjuskaloShopScanner implements ShopScanner {
   @Override
   public Optional<String> scanForProducts(ScanDto scanDto) {
 
-    NjuskaloCarUrl url = new NjuskaloCarUrlBuilder(scanDto.getFullCarName())
+    NjuskaloCarUrl url = new NjuskaloCarUrlBuilder(scanDto.getCar())
         .withMinPrice(scanDto.getMinPrice())
         .withMaxPrice(scanDto.getMaxPrice())
         .withMinYearManufactured(scanDto.getMinYearManufactured())

@@ -2,6 +2,7 @@ package com.adverts.scanner.api.rest.scan;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.adverts.scanner.domain.scan.CarModel;
 import com.adverts.scanner.domain.scan.EngineTypeDto;
 import com.adverts.scanner.domain.scan.ScanDto;
 import org.junit.jupiter.api.Test;
@@ -21,7 +22,7 @@ class ScanDtoMapperTest {
     scanParameters.setMaxEnginePower("301");
     scanParameters.setMinMileage("400");
     scanParameters.setMaxMileage("401");
-    scanParameters.setFullCarName("fullCarName");
+    scanParameters.setCar(CarModel.audi_a5);
 
     // execute
     ScanDto scanDto = ScanDtoMapper.map(scanParameters);
@@ -36,6 +37,6 @@ class ScanDtoMapperTest {
     assertThat(scanDto.getMaxEnginePower()).isEqualTo("301");
     assertThat(scanDto.getMinMileage()).isEqualTo("400");
     assertThat(scanDto.getMaxMileage()).isEqualTo("401");
-    assertThat(scanDto.getFullCarName()).isEqualTo("fullCarName");
+    assertThat(scanDto.getCar()).isEqualTo(CarModel.audi_a5);
   }
 }

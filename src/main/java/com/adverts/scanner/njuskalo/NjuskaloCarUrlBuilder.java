@@ -1,5 +1,7 @@
 package com.adverts.scanner.njuskalo;
 
+import com.adverts.scanner.domain.scan.CarModel;
+
 public class NjuskaloCarUrlBuilder {
 
   private static final String NJUSKALO_URL = "https://www.njuskalo.hr/";
@@ -16,8 +18,10 @@ public class NjuskaloCarUrlBuilder {
   private static final String MAX_ENGINE_POWER = "motorPower%5Bmax%5D=";
 
   private StringBuilder carUriBuilder;
+  private NjuskaloCarUriParser parser = new NjuskaloCarUriParser();
 
-  public NjuskaloCarUrlBuilder(String carUri) {
+  public NjuskaloCarUrlBuilder(CarModel carModel) {
+    String carUri = parser.getUri(carModel);
     this.carUriBuilder = new StringBuilder(NJUSKALO_URL + CARS_URI);
     this.carUriBuilder.append(carUri);
     this.carUriBuilder.append("?");

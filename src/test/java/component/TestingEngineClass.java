@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.adverts.scanner.domain.downloaderhtml.HtmlDownloader;
 import com.adverts.scanner.domain.downloaderhtml.HtmlDownloaderImpl;
+import com.adverts.scanner.domain.scan.CarModel;
 import com.adverts.scanner.njuskalo.NjuskaloCarUrl;
 import com.adverts.scanner.njuskalo.NjuskaloCarUrlBuilder;
 import com.adverts.scanner.njuskalo.NjuskaloProductsScanner;
@@ -26,7 +27,7 @@ public class TestingEngineClass {
   @Test
   void given_URL_Then_Check_If_Products_Exists() {
     // prepare
-    NjuskaloCarUrl url = new NjuskaloCarUrlBuilder("audi-a5-coupe")
+    NjuskaloCarUrl url = new NjuskaloCarUrlBuilder(CarModel.audi_a5)
         .withMinPrice("5000")
         .withMaxPrice("7000")
         .withMinYearManufactured("1989")

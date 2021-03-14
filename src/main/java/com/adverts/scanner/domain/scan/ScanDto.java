@@ -16,6 +16,6 @@ public class ScanDto {
   private String maxEnginePower;
   private String minMileage;
   private String maxMileage;
-  private String fullCarName;
+  private CarModel car;
 
 }
