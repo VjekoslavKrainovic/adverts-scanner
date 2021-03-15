@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/")
 public class ScanController {
 
-  private ScanService scanService;
+  private final ScanService scanService;
 
   public ScanController(ScanService scanService) {
     this.scanService = scanService;

@@ -8,9 +8,16 @@ import org.springframework.stereotype.Service;
 public class NotificationServiceImpl implements NotificationService {
 
   @Override
-  public void notify(String username, String advertsUrl) {
-    log.info("notify() START");
+  public void scanFound(String username, String advertsUrl) {
+    log.info("scanFound() START");
 
-    log.info("notify() END");
+    log.info("scanFound() END");
+  }
+
+  @Override
+  public void userCreated(String email, String password) {
+    log.info("userCreated() START");
+
+    log.info("userCreated() END");
   }
 }

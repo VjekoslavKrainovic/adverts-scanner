@@ -2,7 +2,8 @@ package com.adverts.scanner.access.database;
 
 import com.adverts.scanner.access.database.entity.UserDto;
 import com.adverts.scanner.access.database.repository.UserRepository;
-import com.adverts.scanner.domain.UserAccessService;
+import com.adverts.scanner.domain.user.User;
+import com.adverts.scanner.domain.user.UserAccessService;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,4 +21,16 @@ public class UserAccessServiceImpl implements UserAccessService {
         .orElseThrow(IllegalArgumentException::new);
     return user.getEmail();
   }
+
+  @Override
+  public void createUser(User user) {
+    userRepository.findByEmail(user.getEmail()).ifPresent(u -> {
+      throw new IllegalArgumentException("User with email: "+  u.getEmail() + " already exist");
+    });
+
+    userRepository.save(UserDto.from(user));
+
+  }
+
+
 }

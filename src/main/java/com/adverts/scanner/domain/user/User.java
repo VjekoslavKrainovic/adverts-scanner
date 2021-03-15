@@ -1,4 +1,4 @@
-package com.adverts.scanner.domain;
+package com.adverts.scanner.domain.user;
 
 import com.adverts.scanner.domain.scan.Scan;
 import java.time.LocalDate;

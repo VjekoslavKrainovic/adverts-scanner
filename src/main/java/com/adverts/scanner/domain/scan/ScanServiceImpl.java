@@ -1,7 +1,7 @@
 package com.adverts.scanner.domain.scan;
 
-import com.adverts.scanner.domain.UserAccessService;
 import com.adverts.scanner.domain.notification.NotificationService;
+import com.adverts.scanner.domain.user.UserAccessService;
 import java.util.List;
 import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
@@ -38,9 +38,15 @@ public class ScanServiceImpl implements ScanService {
   public void startScan() {
     log.info("startScan() START");
     List<Scan> scans = scanAccessService.getNonScanned();
+
     scans.forEach(scan -> {
       Optional<String> scanUrl = shopScanner.scanForProducts(scan);
-      scanUrl.ifPresent(s -> notificationService.notify(userAccessService.getEmailFromScanId(scan.getId()), s));
+
+      scanUrl.ifPresent(s -> {
+        log.info("Scan found for scanId: {}", scan.getId());
+            notificationService.scanFound(userAccessService.getEmailFromScanId(scan.getId()), s);
+          }
+      );
       scanAccessService.updateScanTime(scan);
     });
     log.info("startScan() END");

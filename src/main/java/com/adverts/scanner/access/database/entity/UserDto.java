@@ -1,6 +1,6 @@
 package com.adverts.scanner.access.database.entity;
 
-import com.adverts.scanner.domain.User;
+import com.adverts.scanner.domain.user.User;
 import com.adverts.scanner.domain.scan.Scan;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -31,10 +31,23 @@ public class UserDto {
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
   private List<ScanDto> scans = new ArrayList<>();
 
+  public UserDto() {
+  }
+
+  public UserDto(String email, String password, LocalDate expireAt, String phoneNumber) {
+    this.email = email;
+    this.password = password;
+    this.expireAt = expireAt;
+    this.phoneNumber = phoneNumber;
+  }
 
   public static User from(UserDto user) {
     List<Scan> scans = user.getScans().stream().map(ScanDto::from).collect(Collectors.toList());
     return new User(user.getEmail(), user.getEmail(), user.getPassword(), user.getExpireAt(),
         user.getPhoneNumber(), user.getDeviceId(), scans);
+  }
+
+  public static UserDto from(User user){
+    return new UserDto(user.getEmail(), user.getPassword(), user.getExpireAt(), user.getPhoneNumber());
   }
 }
