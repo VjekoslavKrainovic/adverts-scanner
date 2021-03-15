@@ -2,6 +2,7 @@ package com.adverts.scanner.access.database.entity;
 
 import com.adverts.scanner.domain.User;
 import com.adverts.scanner.domain.scan.Scan;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,12 +25,16 @@ public class UserDto {
   private int id;
   private String email;
   private String password;
+  private LocalDate expireAt;
+  private String phoneNumber;
+  private String deviceId;
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
   private List<ScanDto> scans = new ArrayList<>();
 
 
   public static User from(UserDto user) {
     List<Scan> scans = user.getScans().stream().map(ScanDto::from).collect(Collectors.toList());
-    return new User(user.getEmail(), user.getEmail(), user.getPassword(), scans);
+    return new User(user.getEmail(), user.getEmail(), user.getPassword(), user.getExpireAt(),
+        user.getPhoneNumber(), user.getDeviceId(), scans);
   }
 }
