@@ -2,6 +2,7 @@ package com.adverts.scanner.domain.user;
 
 import com.adverts.scanner.Util;
 import com.adverts.scanner.domain.notification.NotificationService;
+import java.time.LocalDate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +28,12 @@ public class UserManagmentServiceImpl implements UserManagmentService {
     userAccessService.createUser(user);
     notificationService.userCreated(user.getEmail(), password);
     log.info("createUser() END");
+  }
+
+  @Override
+  public void subscribeUser(String username, LocalDate expireAt) {
+    log.info("subscribeUser() START");
+    userAccessService.subscribeUser(username, expireAt);
+    log.info("subscribeUser() END");
   }
 }

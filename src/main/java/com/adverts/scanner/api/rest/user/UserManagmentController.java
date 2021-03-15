@@ -21,4 +21,9 @@ public class UserManagmentController {
     userManagmentService.createUser(createUserRequest.from());
   }
 
+  @PostMapping("v1/user/subscribe")
+  public void subscribeUser(@RequestBody UserSubscribeRequest userSubscribeRequest) {
+    userManagmentService.subscribeUser(userSubscribeRequest.getUsername(), userSubscribeRequest.getExpireAt());
+  }
+
 }
