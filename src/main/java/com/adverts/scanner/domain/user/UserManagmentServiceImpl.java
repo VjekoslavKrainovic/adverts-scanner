@@ -4,6 +4,8 @@ import com.adverts.scanner.Util;
 import com.adverts.scanner.domain.notification.NotificationService;
 import java.time.LocalDate;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -35,5 +37,10 @@ public class UserManagmentServiceImpl implements UserManagmentService {
     log.info("subscribeUser() START");
     userAccessService.subscribeUser(username, expireAt);
     log.info("subscribeUser() END");
+  }
+
+  @Override
+  public Page<User> getUsers(Pageable pageable) {
+    return userAccessService.getUsers(pageable);
   }
 }

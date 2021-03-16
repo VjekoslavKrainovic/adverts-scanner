@@ -5,6 +5,8 @@ import com.adverts.scanner.access.database.repository.UserRepository;
 import com.adverts.scanner.domain.user.User;
 import com.adverts.scanner.domain.user.UserAccessService;
 import java.time.LocalDate;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -39,6 +41,11 @@ public class UserAccessServiceImpl implements UserAccessService {
         .orElseThrow(IllegalArgumentException::new);
     user.setExpireAt(expireAt);
     userRepository.save(user);
+  }
+
+  @Override
+  public Page<User> getUsers(Pageable pageable) {
+    return userRepository.findAll(pageable).map(UserDto::from);
   }
 
 
