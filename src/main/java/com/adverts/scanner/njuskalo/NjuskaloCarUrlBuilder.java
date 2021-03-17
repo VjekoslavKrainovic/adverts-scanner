@@ -2,6 +2,7 @@ package com.adverts.scanner.njuskalo;
 
 import com.adverts.scanner.domain.scan.CarModel;
 import com.adverts.scanner.domain.scan.EngineType;
+import com.adverts.scanner.domain.scan.Location;
 
 public class NjuskaloCarUrlBuilder {
 
@@ -17,6 +18,7 @@ public class NjuskaloCarUrlBuilder {
   private static final String ENGINE_TYPE = "fuelTypeId=";
   private static final String MIN_ENGINE_POWER = "motorPower%5Bmin%5D=";
   private static final String MAX_ENGINE_POWER = "motorPower%5Bmax%5D=";
+  private static final String LOCATION = "geo%5BlocationIds%5D=";
 
   private final StringBuilder carUriBuilder;
 
@@ -81,10 +83,14 @@ public class NjuskaloCarUrlBuilder {
   }
 
   public NjuskaloCarUrlBuilder withEngineType(EngineType engineType) {
-    NjuskaloEngineTypeUriParser parse = new NjuskaloEngineTypeUriParser();
+    String engineTypeUri = "";
+    if (engineType != null) {
+      NjuskaloEngineTypeUriParser parser = new NjuskaloEngineTypeUriParser();
+      engineTypeUri = parser.getUri(engineType);
+    }
     getNextQueryParameterSign();
     this.carUriBuilder.append(ENGINE_TYPE);
-    this.carUriBuilder.append(parse.getUri(engineType));
+    this.carUriBuilder.append(engineTypeUri);
 
     return this;
   }
@@ -101,6 +107,19 @@ public class NjuskaloCarUrlBuilder {
     getNextQueryParameterSign();
     this.carUriBuilder.append(MAX_ENGINE_POWER);
     this.carUriBuilder.append(maxEnginePower);
+
+    return this;
+  }
+
+  public NjuskaloCarUrlBuilder withLocation(Location location) {
+    String locationUri = "";
+    if (location != null) {
+      NjuskaloLocationUrlParser parser = new NjuskaloLocationUrlParser();
+      locationUri = parser.getUri(location);
+    }
+    getNextQueryParameterSign();
+    this.carUriBuilder.append(LOCATION);
+    this.carUriBuilder.append(locationUri);
 
     return this;
   }

@@ -20,10 +20,11 @@ public class Scan {
   private String maxMileage;
   private CarModel car;
   private LocalDateTime scannedAt;
+  private Location location;
 
   public Scan(String minPrice, String maxPrice, String minYearManufactured, String maxYearManufactured,
       EngineType engineType, String minEnginePower, String maxEnginePower, String minMileage, String maxMileage,
-      CarModel car) {
+      CarModel car, Location location) {
     this.minPrice = minPrice;
     this.maxPrice = maxPrice;
     this.minYearManufactured = minYearManufactured;
@@ -34,6 +35,7 @@ public class Scan {
     this.minMileage = minMileage;
     this.maxMileage = maxMileage;
     this.car = car;
+    this.location = location;
   }
 
   public void scanStarted(){

@@ -8,7 +8,7 @@ public class ScanDtoMapper {
     return new Scan(scanParameters.getMinPrice(), scanParameters.getMaxPrice(), scanParameters.getMinYearManufactured(),
         scanParameters.getMaxYearManufactured(), scanParameters.getEngineType(),
         scanParameters.getMinEnginePower(), scanParameters.getMaxEnginePower(), scanParameters.getMinMileage(),
-        scanParameters.getMaxMileage(), scanParameters.getCar());
+        scanParameters.getMaxMileage(), scanParameters.getCar(), scanParameters.getLocation());
   }
 
 }

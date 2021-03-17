@@ -2,6 +2,7 @@ package com.adverts.scanner.access.database.entity;
 
 import com.adverts.scanner.domain.scan.CarModel;
 import com.adverts.scanner.domain.scan.EngineType;
+import com.adverts.scanner.domain.scan.Location;
 import com.adverts.scanner.domain.scan.Scan;
 import java.time.LocalDateTime;
 import javax.persistence.Entity;
@@ -34,13 +35,14 @@ public class ScanDto {
   private LocalDateTime scannedAt;
   @ManyToOne(fetch = FetchType.LAZY)
   private UserDto user;
+  private Location location;
 
   public ScanDto() {
   }
 
   public ScanDto(String minPrice, String maxPrice, String minYearManufactured, String maxYearManufactured,
       EngineType engineType, CarModel carModel, String minEnginePower, String maxEnginePower, String minMileage,
-      String maxMileage, LocalDateTime scannedAt, UserDto user) {
+      String maxMileage, LocalDateTime scannedAt, UserDto user, Location location) {
     this.minPrice = minPrice;
     this.maxPrice = maxPrice;
     this.minYearManufactured = minYearManufactured;
@@ -53,18 +55,19 @@ public class ScanDto {
     this.maxMileage = maxMileage;
     this.scannedAt = scannedAt;
     this.user = user;
+    this.location = location;
   }
 
   public static ScanDto from(Scan scan, UserDto user) {
     return new ScanDto(scan.getMinPrice(), scan.getMaxPrice(), scan.getMinYearManufactured(),
         scan.getMaxYearManufactured(), scan.getEngineType(), scan.getCar(), scan.getMinEnginePower(),
-        scan.getMaxEnginePower(), scan.getMinMileage(), scan.getMaxMileage(), scan.getScannedAt(), user);
+        scan.getMaxEnginePower(), scan.getMinMileage(), scan.getMaxMileage(), scan.getScannedAt(), user, scan.getLocation());
   }
 
   public static Scan from(ScanDto scan){
     return new Scan(String.valueOf(scan.getId()), scan.getMinPrice(), scan.getMaxPrice(),
         scan.getMinYearManufactured(), scan.getMaxYearManufactured(), scan.getEngineType(), scan.getMinEnginePower(),
         scan.getMaxEnginePower(), scan.getMinMileage(), scan.getMaxMileage(), scan.getCarModel(),
-        scan.getScannedAt());
+        scan.getScannedAt(), scan.getLocation());
   }
 }
