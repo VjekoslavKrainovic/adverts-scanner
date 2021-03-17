@@ -10,4 +10,6 @@ public interface ScanService {
   void startScan();
 
   Page<Scan> getScansByUsername(String username, Pageable pageable);
+
+  void deleteScanByUser(String username, String id);
 }

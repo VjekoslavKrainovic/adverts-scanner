@@ -13,4 +13,7 @@ public interface ScanAccessService {
   void updateScanTime(Scan scan);
 
   Page<Scan> getByUsername(String username, Pageable pageable);
+
+  void deleteScanByIdAndUsername(String username, String id);
+
 }

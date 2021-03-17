@@ -8,6 +8,7 @@ import com.adverts.scanner.domain.scan.Scan;
 import com.adverts.scanner.domain.scan.ScanAccessService;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -54,5 +55,14 @@ public class ScanAccessServiceImpl implements ScanAccessService {
     return scans.map(ScanDto::from);
   }
 
+  @Override
+  public void deleteScanByIdAndUsername(String username, String id) {
+    Optional<ScanDto> scan = scanRepository.findById(Integer.parseInt(id));
+    scan.ifPresent(scanDto -> {
+      if (scanDto.getUser().getEmail().equals(username)) {
+        scanRepository.deleteById(Integer.parseInt(id));
+      }
+    });
+  }
 
 }

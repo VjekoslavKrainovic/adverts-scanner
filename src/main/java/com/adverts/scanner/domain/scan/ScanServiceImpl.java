@@ -59,5 +59,10 @@ public class ScanServiceImpl implements ScanService {
     return scanAccessService.getByUsername(username, pageable);
   }
 
+  @Override
+  public void deleteScanByUser(String username, String id) {
+      scanAccessService.deleteScanByIdAndUsername(username, id);
+  }
+
 
 }

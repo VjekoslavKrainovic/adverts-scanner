@@ -6,7 +6,9 @@ import com.adverts.scanner.domain.scan.ScanService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +25,7 @@ public class ScanController {
   }
 
   // TODO: add Principal
-  @PostMapping("v1/scan/create")
+  @PostMapping("v1/scan")
   public ScanUrlResponse createScan(@RequestBody ScanParameters scanParameters) {
     Scan scan = ScanDtoMapper.map(scanParameters);
     String advertShopUrl = scanService.createScan(scan, "vjeko@email.com");
@@ -41,5 +43,10 @@ public class ScanController {
         .body(scanResponseWrapper);
   }
 
+  // TODO: add Principal
+  @DeleteMapping("v1/scan/{id}")
+  public void deleteScan(@PathVariable String id) {
+    scanService.deleteScanByUser("vjeko@email.com", id);
+  }
 
 }
