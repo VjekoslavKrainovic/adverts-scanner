@@ -9,6 +9,8 @@ import com.adverts.scanner.domain.scan.ScanAccessService;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -44,6 +46,12 @@ public class ScanAccessServiceImpl implements ScanAccessService {
         .orElseThrow(IllegalArgumentException::new);
     scanDto.setScannedAt(scan.getScannedAt());
     scanRepository.save(scanDto);
+  }
+
+  @Override
+  public Page<Scan> getByUsername(String username, Pageable pageable) {
+    Page<ScanDto> scans = scanRepository.findByUserEmail(username, pageable);
+    return scans.map(ScanDto::from);
   }
 
 

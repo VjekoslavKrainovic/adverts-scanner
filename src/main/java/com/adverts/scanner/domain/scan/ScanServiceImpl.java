@@ -5,6 +5,8 @@ import com.adverts.scanner.domain.user.UserAccessService;
 import java.util.List;
 import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -43,13 +45,18 @@ public class ScanServiceImpl implements ScanService {
       Optional<String> scanUrl = shopScanner.scanForProducts(scan);
 
       scanUrl.ifPresent(s -> {
-        log.info("Scan found for scanId: {}", scan.getId());
+            log.info("Scan found for scanId: {}", scan.getId());
             notificationService.scanFound(userAccessService.getEmailFromScanId(scan.getId()), s);
           }
       );
       scanAccessService.updateScanTime(scan);
     });
     log.info("startScan() END");
+  }
+
+  @Override
+  public Page<Scan> getScansByUsername(String username, Pageable pageable) {
+    return scanAccessService.getByUsername(username, pageable);
   }
 
 

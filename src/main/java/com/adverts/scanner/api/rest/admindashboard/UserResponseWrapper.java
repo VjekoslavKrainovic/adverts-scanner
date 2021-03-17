@@ -1,4 +1,4 @@
-package com.adverts.scanner.api.rest.user;
+package com.adverts.scanner.api.rest.admindashboard;
 
 import com.adverts.scanner.domain.user.User;
 import java.time.LocalDate;

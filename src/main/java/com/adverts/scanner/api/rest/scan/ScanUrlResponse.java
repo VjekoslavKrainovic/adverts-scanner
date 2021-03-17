@@ -5,6 +5,6 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class ScanResponse {
+public class ScanUrlResponse {
   private String advertShopUrl;
 }

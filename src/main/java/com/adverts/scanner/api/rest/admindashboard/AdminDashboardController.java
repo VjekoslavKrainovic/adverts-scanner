@@ -1,10 +1,10 @@
-package com.adverts.scanner.api.rest.user;
+package com.adverts.scanner.api.rest.admindashboard;
 
+import com.adverts.scanner.Util;
 import com.adverts.scanner.domain.user.User;
 import com.adverts.scanner.domain.user.UserManagmentService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,14 +38,8 @@ public class AdminDashboardController {
 
     UserResponseWrapper userRespons = UserResponseWrapper.from(users.getContent());
 
-    HttpHeaders responseHeaders = new HttpHeaders();
-    responseHeaders.set("totalElements", String.valueOf(users.getTotalElements()));
-    responseHeaders.set("totalPages", String.valueOf(users.getTotalPages()));
-    responseHeaders.set("hasNext", String.valueOf(users.hasNext()));
-    responseHeaders.set("hasPrevious", String.valueOf(users.hasPrevious()));
-
     return ResponseEntity.ok()
-        .headers(responseHeaders)
+        .headers(Util.getHeaderWithPaginationsData(users))
         .body(userRespons);
   }
 }
